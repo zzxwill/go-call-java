@@ -5,8 +5,8 @@ import (
 	"os/exec"
 )
 
-func command(name string) (string, error) {
-	out, err := exec.Command("/usr/bin/java", "Hello", name).Output()
+func command(className string, functionName string) (string, error) {
+	out, err := exec.Command("/usr/bin/java", "com.Hello", className, functionName).Output()
 	if err != nil {
 		return "", err
 	}
@@ -15,7 +15,7 @@ func command(name string) (string, error) {
 }
 
 func main() {
-	say, err := command("viney")
+	say, err := command("Talk", "hi")
 	if err != nil {
 		fmt.Println("command: ", err)
 		return
